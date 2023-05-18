@@ -1,0 +1,197 @@
+﻿<Window x:Class="WPF_SETTING"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FFXIV_SUPPORT_GAMEPAD"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="#D0FFFFFF"
+        mc:Ignorable="d"
+        Title="設定" Height="420" Width="730" FontFamily="Meiryo" ResizeMode="NoResize">
+    <Grid>
+        <TabControl Margin="10,10,10,50" Background="#00000000">
+            <TabItem Header="ゲームパッド">
+                <Grid>
+                    <GroupBox Header="全般" VerticalAlignment="Top" Margin="5,5,5,0" Height="60" Grid.ColumnSpan="3">
+                        <Grid>
+                            <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="種類"/>
+                            <ComboBox x:Name="CMB_KIND_GAMEPAD" HorizontalAlignment="Left" Margin="40,5,5,5" Width="420">
+                                <ComboBoxItem Content="使用しない"/>
+                                <ComboBoxItem Content="標準コントローラー"/>
+                                <ComboBoxItem Content="DUALSHOCK®4 USB Wireless Adaptor"/>
+                                <ComboBoxItem Content="EDGE 301"/>
+                            </ComboBox>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="割り当て" VerticalAlignment="Top" Margin="5,65,5,0" Height="250">
+                        <Grid>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                                <Grid>
+                                    <Grid VerticalAlignment="Top" Margin="5,5,5,5" Height="40">
+                                        <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="01"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_01_BUTTON_01" HorizontalAlignment="Left" Margin="40,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_01_BUTTON_02" HorizontalAlignment="Left" Margin="120,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_01_BUTTON_03" HorizontalAlignment="Left" Margin="200,5,5,5" Width="80"/>
+                                        <Label HorizontalAlignment="Left" Margin="280,5,5,5" Content="⇒"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_01_KIND" HorizontalAlignment="Left" Margin="300,5,5,5" Width="65"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_01_KEY_01" HorizontalAlignment="Left" Margin="365,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_01_KEY_02" HorizontalAlignment="Left" Margin="445,5,5,5" Width="100"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_01_MOUSE_X" HorizontalAlignment="Left" Margin="545,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_01_MOUSE_Y" HorizontalAlignment="Left" Margin="595,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                    </Grid>
+                                    <Grid VerticalAlignment="Top" Margin="5,45,5,5" Height="40">
+                                        <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="02"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_02_BUTTON_01" HorizontalAlignment="Left" Margin="40,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_02_BUTTON_02" HorizontalAlignment="Left" Margin="120,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_02_BUTTON_03" HorizontalAlignment="Left" Margin="200,5,5,5" Width="80"/>
+                                        <Label HorizontalAlignment="Left" Margin="280,5,5,5" Content="⇒"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_02_KIND" HorizontalAlignment="Left" Margin="300,5,5,5" Width="65"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_02_KEY_01" HorizontalAlignment="Left" Margin="365,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_02_KEY_02" HorizontalAlignment="Left" Margin="445,5,5,5" Width="100"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_02_MOUSE_X" HorizontalAlignment="Left" Margin="545,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_02_MOUSE_Y" HorizontalAlignment="Left" Margin="595,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                    </Grid>
+                                    <Grid VerticalAlignment="Top" Margin="5,85,5,5" Height="40">
+                                        <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="03"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_03_BUTTON_01" HorizontalAlignment="Left" Margin="40,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_03_BUTTON_02" HorizontalAlignment="Left" Margin="120,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_03_BUTTON_03" HorizontalAlignment="Left" Margin="200,5,5,5" Width="80"/>
+                                        <Label HorizontalAlignment="Left" Margin="280,5,5,5" Content="⇒"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_03_KIND" HorizontalAlignment="Left" Margin="300,5,5,5" Width="65"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_03_KEY_01" HorizontalAlignment="Left" Margin="365,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_03_KEY_02" HorizontalAlignment="Left" Margin="445,5,5,5" Width="100"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_03_MOUSE_X" HorizontalAlignment="Left" Margin="545,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_03_MOUSE_Y" HorizontalAlignment="Left" Margin="595,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                    </Grid>
+                                    <Grid VerticalAlignment="Top" Margin="5,125,5,5" Height="40">
+                                        <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="04"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_04_BUTTON_01" HorizontalAlignment="Left" Margin="40,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_04_BUTTON_02" HorizontalAlignment="Left" Margin="120,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_04_BUTTON_03" HorizontalAlignment="Left" Margin="200,5,5,5" Width="80"/>
+                                        <Label HorizontalAlignment="Left" Margin="280,5,5,5" Content="⇒"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_04_KIND" HorizontalAlignment="Left" Margin="300,5,5,5" Width="65"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_04_KEY_01" HorizontalAlignment="Left" Margin="365,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_04_KEY_02" HorizontalAlignment="Left" Margin="445,5,5,5" Width="100"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_04_MOUSE_X" HorizontalAlignment="Left" Margin="545,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_04_MOUSE_Y" HorizontalAlignment="Left" Margin="595,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                    </Grid>
+                                    <Grid VerticalAlignment="Top" Margin="5,165,5,5" Height="40">
+                                        <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="05"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_05_BUTTON_01" HorizontalAlignment="Left" Margin="40,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_05_BUTTON_02" HorizontalAlignment="Left" Margin="120,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_05_BUTTON_03" HorizontalAlignment="Left" Margin="200,5,5,5" Width="80"/>
+                                        <Label HorizontalAlignment="Left" Margin="280,5,5,5" Content="⇒"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_05_KIND" HorizontalAlignment="Left" Margin="300,5,5,5" Width="65"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_05_KEY_01" HorizontalAlignment="Left" Margin="365,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_05_KEY_02" HorizontalAlignment="Left" Margin="445,5,5,5" Width="100"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_05_MOUSE_X" HorizontalAlignment="Left" Margin="545,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_05_MOUSE_Y" HorizontalAlignment="Left" Margin="595,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                    </Grid>
+                                    <Grid VerticalAlignment="Top" Margin="5,205,5,5" Height="40">
+                                        <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="06"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_06_BUTTON_01" HorizontalAlignment="Left" Margin="40,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_06_BUTTON_02" HorizontalAlignment="Left" Margin="120,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_06_BUTTON_03" HorizontalAlignment="Left" Margin="200,5,5,5" Width="80"/>
+                                        <Label HorizontalAlignment="Left" Margin="280,5,5,5" Content="⇒"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_06_KIND" HorizontalAlignment="Left" Margin="300,5,5,5" Width="65"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_06_KEY_01" HorizontalAlignment="Left" Margin="365,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_06_KEY_02" HorizontalAlignment="Left" Margin="445,5,5,5" Width="100"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_06_MOUSE_X" HorizontalAlignment="Left" Margin="545,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_06_MOUSE_Y" HorizontalAlignment="Left" Margin="595,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                    </Grid>
+                                    <Grid VerticalAlignment="Top" Margin="5,245,5,5" Height="40">
+                                        <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="07"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_07_BUTTON_01" HorizontalAlignment="Left" Margin="40,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_07_BUTTON_02" HorizontalAlignment="Left" Margin="120,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_07_BUTTON_03" HorizontalAlignment="Left" Margin="200,5,5,5" Width="80"/>
+                                        <Label HorizontalAlignment="Left" Margin="280,5,5,5" Content="⇒"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_07_KIND" HorizontalAlignment="Left" Margin="300,5,5,5" Width="65"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_07_KEY_01" HorizontalAlignment="Left" Margin="365,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_07_KEY_02" HorizontalAlignment="Left" Margin="445,5,5,5" Width="100"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_07_MOUSE_X" HorizontalAlignment="Left" Margin="545,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_07_MOUSE_Y" HorizontalAlignment="Left" Margin="595,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                    </Grid>
+                                    <Grid VerticalAlignment="Top" Margin="5,285,5,5" Height="40">
+                                        <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="08"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_08_BUTTON_01" HorizontalAlignment="Left" Margin="40,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_08_BUTTON_02" HorizontalAlignment="Left" Margin="120,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_08_BUTTON_03" HorizontalAlignment="Left" Margin="200,5,5,5" Width="80"/>
+                                        <Label HorizontalAlignment="Left" Margin="280,5,5,5" Content="⇒"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_08_KIND" HorizontalAlignment="Left" Margin="300,5,5,5" Width="65"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_08_KEY_01" HorizontalAlignment="Left" Margin="365,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_08_KEY_02" HorizontalAlignment="Left" Margin="445,5,5,5" Width="100"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_08_MOUSE_X" HorizontalAlignment="Left" Margin="545,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_08_MOUSE_Y" HorizontalAlignment="Left" Margin="595,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                    </Grid>
+                                    <Grid VerticalAlignment="Top" Margin="5,325,5,5" Height="40">
+                                        <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="09"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_09_BUTTON_01" HorizontalAlignment="Left" Margin="40,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_09_BUTTON_02" HorizontalAlignment="Left" Margin="120,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_09_BUTTON_03" HorizontalAlignment="Left" Margin="200,5,5,5" Width="80"/>
+                                        <Label HorizontalAlignment="Left" Margin="280,5,5,5" Content="⇒"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_09_KIND" HorizontalAlignment="Left" Margin="300,5,5,5" Width="65"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_09_KEY_01" HorizontalAlignment="Left" Margin="365,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_09_KEY_02" HorizontalAlignment="Left" Margin="445,5,5,5" Width="100"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_09_MOUSE_X" HorizontalAlignment="Left" Margin="545,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_09_MOUSE_Y" HorizontalAlignment="Left" Margin="595,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                    </Grid>
+                                    <Grid VerticalAlignment="Top" Margin="5,365,5,5" Height="40">
+                                        <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="10"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_10_BUTTON_01" HorizontalAlignment="Left" Margin="40,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_10_BUTTON_02" HorizontalAlignment="Left" Margin="120,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_10_BUTTON_03" HorizontalAlignment="Left" Margin="200,5,5,5" Width="80"/>
+                                        <Label HorizontalAlignment="Left" Margin="280,5,5,5" Content="⇒"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_10_KIND" HorizontalAlignment="Left" Margin="300,5,5,5" Width="65"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_10_KEY_01" HorizontalAlignment="Left" Margin="365,5,5,5" Width="80"/>
+                                        <ComboBox x:Name="CMB_GAMEPAD_ALLOCATION_10_KEY_02" HorizontalAlignment="Left" Margin="445,5,5,5" Width="100"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_10_MOUSE_X" HorizontalAlignment="Left" Margin="545,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                        <TextBox x:Name="TXT_GAMEPAD_ALLOCATION_10_MOUSE_Y" HorizontalAlignment="Left" Margin="595,5,5,5" Width="50" TextAlignment="Right" MaxLength="4" InputMethod.IsInputMethodEnabled="False"/>
+                                    </Grid>
+                                </Grid>
+                            </ScrollViewer>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="動作テスト">
+                <GroupBox Header="各種確認" Margin="5,5,5,5" >
+                    <Grid>
+                        <Grid Margin="5,5,5,5" VerticalAlignment="Top">
+                            <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="キー送信テスト" />
+                            <Button x:Name="BTN_TEST_SEND_KEY" HorizontalAlignment="Left" Margin="110,5,5,5" Height="30" Width="80" Content="送信"/>
+                            <Label HorizontalAlignment="Left" Margin="200,5,5,5" Content="キー「1」を送信します。" />
+                        </Grid>
+                        <Grid Margin="5,40,5,5" VerticalAlignment="Top">
+                            <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="文字列送信テスト" />
+                            <TextBox x:Name="TXT_TEST_SEND_STR" HorizontalAlignment="Left" Margin="110,5,5,5" Width="80" />
+                            <Button x:Name="BTN_TEST_SEND_STR" HorizontalAlignment="Left" Margin="200,5,5,5" Height="30" Width="80" Content="送信"/>
+                            <Label HorizontalAlignment="Left" Margin="280,5,5,5" Content="チャット欄に文字列を送信します。" />
+                        </Grid>
+                        <Grid Margin="5,75,5,5" VerticalAlignment="Top">
+                            <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="マウス操作テスト" />
+                            <TextBox x:Name="TXT_TEST_OPERATION_MOUSE_X" HorizontalAlignment="Left" Margin="110,5,5,5" Width="40" TextAlignment="Right" MaxLength="4"/>
+                            <TextBox x:Name="TXT_TEST_OPERATION_MOUSE_Y" HorizontalAlignment="Left" Margin="150,5,5,5" Width="40" TextAlignment="Right" MaxLength="4"/>
+                            <Button x:Name="BTN_TEST_OPERATION_MOUSE" HorizontalAlignment="Left" Margin="200,5,5,5" Height="30" Width="80" Content="移動"/>
+                            <Label HorizontalAlignment="Left" Margin="280,5,5,5" Content="設定位置にマウスを移動します。" />
+                        </Grid>
+                        <Grid Margin="5,110,5,5" VerticalAlignment="Top">
+                            <Label HorizontalAlignment="Left" Margin="5,5,5,5" Content="ゲームパッド状態" />
+                            <Label HorizontalAlignment="Left" Margin="110,5,5,5" Content="ID" />
+                            <ComboBox x:Name="CMB_TEST_GAMEPAD_ID" HorizontalAlignment="Left" Margin="130,5,5,5" Width="40"/>
+                            <Label HorizontalAlignment="Left" Margin="180,5,5,5" Content="POV" />
+                            <Label x:Name="LBL_TEST_GAMEPAD_POV" HorizontalAlignment="Left" Margin="220,5,5,5" Content="" Width="150" Background="White" BorderThickness="1" BorderBrush="Black" />
+                            <Label HorizontalAlignment="Left" Margin="380,5,5,5" Content="ボタン" />
+                            <Label x:Name="LBL_TEST_GAMEPAD_BUTTON" HorizontalAlignment="Left" Margin="430,5,5,5" Content="" Width="170" Background="White" BorderThickness="1" BorderBrush="Black" />
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+            </TabItem>
+        </TabControl>
+        <Grid VerticalAlignment="Bottom" Margin="5,5,5,5">
+            <Button x:Name="BTN_OK" HorizontalAlignment="Right" Margin="5,5,175,5" Height="30" Width="80" Content="OK"/>
+            <Button x:Name="BTN_CANCEL" HorizontalAlignment="Right" Margin="5,5,90,5" Height="30" Width="80" Content="キャンセル"/>
+            <Button x:Name="BTN_INIT_SETTINGS" HorizontalAlignment="Right" Margin="5,5,5,5" Height="30" Width="80" Content="全て初期化"/>
+        </Grid>
+    </Grid>
+</Window>
