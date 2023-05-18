@@ -22,6 +22,7 @@
 
     Public Structure SRT_SETTINGS_GAMEPAD
         Public KIND_GAME_PAD As Integer
+        Public MASK_EXCLUSIVE_BUTTON() As Integer
         Public ALLOCATION() As SRT_SETTINGS_GAMEPAD_ALLOCATION
     End Structure
 
@@ -128,6 +129,11 @@
                 .ALLOCATION(i).MOUSE_X = CTL_SETTINGS.SRT_GAC(i).MOUSE_X.Text
                 .ALLOCATION(i).MOUSE_Y = CTL_SETTINGS.SRT_GAC(i).MOUSE_Y.Text
             Next
+
+            ReDim SRT_RET.GAMEPAD.MASK_EXCLUSIVE_BUTTON(2)
+            SRT_RET.GAMEPAD.MASK_EXCLUSIVE_BUTTON(1) = 7
+            SRT_RET.GAMEPAD.MASK_EXCLUSIVE_BUTTON(2) = 8
+
             'Dim INT_INDEX As Integer
             'INT_INDEX = 0
 
@@ -188,6 +194,12 @@
                 .MOUSE_Y = 0
             End With
         Next
+
+        With SRT_RET.GAMEPAD
+            ReDim .MASK_EXCLUSIVE_BUTTON(2)
+            .MASK_EXCLUSIVE_BUTTON(1) = 0
+            .MASK_EXCLUSIVE_BUTTON(2) = 0
+        End With
 
         Return SRT_RET
     End Function

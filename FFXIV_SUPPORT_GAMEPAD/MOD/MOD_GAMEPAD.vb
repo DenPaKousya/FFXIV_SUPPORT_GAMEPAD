@@ -27,6 +27,7 @@ Module MOD_GAMEPAD
 
 #Region "モジュール用・変数"
     Private SRT_BUTTONS(CST_BUTTONS_COUNT) As SRT_BUTTON_PUSH
+    Private INT_MASK_EXCLUSIVE_BUTTON(2) As Integer
     Private FRM_PARENT As FRM_MAIN
     Public ING_CAPTURE_GAMEPAD_ID As Integer
 #End Region
@@ -108,6 +109,9 @@ Module MOD_GAMEPAD
                 SRT_BUTTONS(i).BUTTON_03 = .BUTTON_03
             End With
         Next
+
+        INT_MASK_EXCLUSIVE_BUTTON(1) = SRT_CURRENT_SETTINGS.GAMEPAD.MASK_EXCLUSIVE_BUTTON(1)
+        INT_MASK_EXCLUSIVE_BUTTON(2) = SRT_CURRENT_SETTINGS.GAMEPAD.MASK_EXCLUSIVE_BUTTON(2)
 
     End Sub
 #End Region
@@ -383,7 +387,8 @@ Module MOD_GAMEPAD
         Next
 
         For i = 1 To (INT_PUSH_BUTTON_NUMBER.Length - 1)
-            Call SUB_EVENT_PUSH_BUTTON(INT_PUSH_BUTTON_NUMBER(i), BLN_BUTTONS_PUSH_BEFORE, BLN_BUTTONS_PUSH)
+
+            Call SUB_EVENT_PUSH_BUTTON(INT_PUSH_BUTTON_NUMBER(i), BLN_BUTTONS_PUSH_BEFORE, BLN_BUTTONS_PUSH, INT_MASK_EXCLUSIVE_BUTTON(1), INT_MASK_EXCLUSIVE_BUTTON(2))
         Next
 
         For i = 1 To (BLN_BUTTONS_PUSH.Length - 1)
@@ -392,7 +397,7 @@ Module MOD_GAMEPAD
 
     End Sub
 
-    Private Sub SUB_EVENT_PUSH_BUTTON(ByVal INT_BUTTON_INDEX As Integer, ByRef BLN_DOWN_BUTTONS() As Boolean, ByRef BLN_UP_BUTTONS() As Boolean)
+    Private Sub SUB_EVENT_PUSH_BUTTON(ByVal INT_BUTTON_INDEX As Integer, ByRef BLN_DOWN_BUTTONS() As Boolean, ByRef BLN_UP_BUTTONS() As Boolean, ByVal INT_SIMULTANEOUSLY_PRESS_01 As Integer, ByVal INT_SIMULTANEOUSLY_PRESS_02 As Integer)
 
         For i = 1 To (SRT_BUTTONS.Length - 1)
             Dim INT_BUTTON_01 As Integer
@@ -434,6 +439,14 @@ Module MOD_GAMEPAD
                 Continue For
             End If
 
+            Dim BLN_CHECK_W_MASK As Boolean
+            BLN_CHECK_W_MASK = False
+            If BLN_DOWN_BUTTONS(INT_SIMULTANEOUSLY_PRESS_01) And BLN_UP_BUTTONS(INT_SIMULTANEOUSLY_PRESS_01) Then
+                If BLN_DOWN_BUTTONS(INT_SIMULTANEOUSLY_PRESS_02) And BLN_UP_BUTTONS(INT_SIMULTANEOUSLY_PRESS_02) Then
+                    BLN_CHECK_W_MASK = True 'マスク同時押しを検知
+                End If
+            End If
+
             Dim BLN_MASK_01 As Boolean
             If INT_MASK_CHECK_INDEX_01 = 0 Then
                 BLN_MASK_01 = True
@@ -446,8 +459,12 @@ Module MOD_GAMEPAD
             End If
 
             Dim BLN_MASK_02 As Boolean
-            If INT_MASK_CHECK_INDEX_02 = 0 Then
-                BLN_MASK_02 = True
+            If INT_MASK_CHECK_INDEX_02 = 0 Then '第二マスクが非設定の場合
+                If BLN_CHECK_W_MASK Then 'マスク同時押しの場合は
+                    BLN_MASK_02 = False '発生させない(R2+LB2が同時押下の際にR2+〇やL2+△などは動作させない)
+                Else
+                    BLN_MASK_02 = True
+                End If
             Else
                 If BLN_DOWN_BUTTONS(INT_MASK_CHECK_INDEX_01) And BLN_UP_BUTTONS(INT_MASK_CHECK_INDEX_02) Then
                     BLN_MASK_02 = True

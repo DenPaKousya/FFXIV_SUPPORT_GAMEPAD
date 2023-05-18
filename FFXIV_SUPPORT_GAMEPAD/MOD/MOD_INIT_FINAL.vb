@@ -49,6 +49,16 @@
                     .KIND_GAME_PAD = CInt(STR_TEMP)
                 End If
 
+                STR_TEMP = FUNC_GET_APP_SETTINGS(CST_CONFIG_GAMEPAD_MASK_EXCLUSIVE_BUTTON)
+                If Not STR_TEMP = "" Then
+                    Dim OBJ_TEMP() As Object
+                    OBJ_TEMP = STR_TEMP.Split(",")
+                    For i = 0 To (OBJ_TEMP.Length - 1)
+                        ReDim Preserve .MASK_EXCLUSIVE_BUTTON(i + 1)
+                        .MASK_EXCLUSIVE_BUTTON(i + 1) = CInt(OBJ_TEMP(i))
+                    Next
+                End If
+
                 ReDim .ALLOCATION(CST_SETTINGS_GAMEPAD_ALLOCATION_COUNT)
                 For i = 1 To (.ALLOCATION.Length - 1)
                     Dim STR_KEY_BASE As String
