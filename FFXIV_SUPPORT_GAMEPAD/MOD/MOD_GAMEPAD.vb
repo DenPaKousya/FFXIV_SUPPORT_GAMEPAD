@@ -387,7 +387,6 @@ Module MOD_GAMEPAD
         Next
 
         For i = 1 To (INT_PUSH_BUTTON_NUMBER.Length - 1)
-
             Call SUB_EVENT_PUSH_BUTTON(INT_PUSH_BUTTON_NUMBER(i), BLN_BUTTONS_PUSH_BEFORE, BLN_BUTTONS_PUSH, INT_MASK_EXCLUSIVE_BUTTON(1), INT_MASK_EXCLUSIVE_BUTTON(2))
         Next
 
@@ -439,16 +438,35 @@ Module MOD_GAMEPAD
                 Continue For
             End If
 
-            Dim BLN_CHECK_W_MASK As Boolean
-            BLN_CHECK_W_MASK = False
-            If BLN_DOWN_BUTTONS(INT_SIMULTANEOUSLY_PRESS_01) And BLN_UP_BUTTONS(INT_SIMULTANEOUSLY_PRESS_01) Then
-                If BLN_DOWN_BUTTONS(INT_SIMULTANEOUSLY_PRESS_02) And BLN_UP_BUTTONS(INT_SIMULTANEOUSLY_PRESS_02) Then
-                    BLN_CHECK_W_MASK = True 'マスク同時押しを検知
+            Dim BLN_CHECK_ALL_BUTTON As Boolean
+            BLN_CHECK_ALL_BUTTON = True
+            For j = 1 To (BLN_UP_BUTTONS.Length - 1)
+                If BLN_UP_BUTTONS(j) Then 'ボタンが押されている
+                    Select Case True
+                        Case (INT_MASK_CHECK_INDEX_01 = 0 And INT_MASK_CHECK_INDEX_02 = 0) '両マスク設定がない場合は
+                            BLN_CHECK_ALL_BUTTON = False 'どのボタンも押されていてはいけない
+                        Case (INT_MASK_CHECK_INDEX_01 <> 0 And INT_MASK_CHECK_INDEX_02 = 0) 'マスク1のみ設定されている場合は
+                            If j <> INT_MASK_CHECK_INDEX_01 Then
+                                BLN_CHECK_ALL_BUTTON = False 'マスク1と違うキーは押されてはいけない
+                            End If
+                        Case (INT_MASK_CHECK_INDEX_01 = 0 And INT_MASK_CHECK_INDEX_02 <> 0) 'マスク2のみ設定されている場合は
+                            If j <> INT_MASK_CHECK_INDEX_02 Then
+                                BLN_CHECK_ALL_BUTTON = False 'マスク1と違うキーは押されてはいけない
+                            End If
+                        Case (INT_MASK_CHECK_INDEX_01 <> 0 And INT_MASK_CHECK_INDEX_02 <> 0) 'マスク1、マスク2が設定されている場合
+                            If (j <> INT_MASK_CHECK_INDEX_01 And j <> INT_MASK_CHECK_INDEX_02) Then
+                                BLN_CHECK_ALL_BUTTON = False 'マスク1、マスク2と違うキーは押されてはいけない
+                            End If
+                    End Select
                 End If
+            Next
+
+            If Not BLN_CHECK_ALL_BUTTON Then
+                Continue For
             End If
 
             Dim BLN_MASK_01 As Boolean
-            If INT_MASK_CHECK_INDEX_01 = 0 Then
+            If INT_MASK_CHECK_INDEX_01 = 0 Then 'マスク1が非設定の場合
                 BLN_MASK_01 = True
             Else
                 If BLN_DOWN_BUTTONS(INT_MASK_CHECK_INDEX_01) And BLN_UP_BUTTONS(INT_MASK_CHECK_INDEX_01) Then
@@ -459,12 +477,8 @@ Module MOD_GAMEPAD
             End If
 
             Dim BLN_MASK_02 As Boolean
-            If INT_MASK_CHECK_INDEX_02 = 0 Then '第二マスクが非設定の場合
-                If BLN_CHECK_W_MASK Then 'マスク同時押しの場合は
-                    BLN_MASK_02 = False '発生させない(R2+LB2が同時押下の際にR2+〇やL2+△などは動作させない)
-                Else
-                    BLN_MASK_02 = True
-                End If
+            If INT_MASK_CHECK_INDEX_02 = 0 Then 'マスク2が非設定の場合
+                BLN_MASK_02 = True
             Else
                 If BLN_DOWN_BUTTONS(INT_MASK_CHECK_INDEX_01) And BLN_UP_BUTTONS(INT_MASK_CHECK_INDEX_02) Then
                     BLN_MASK_02 = True
