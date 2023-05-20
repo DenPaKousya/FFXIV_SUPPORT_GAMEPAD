@@ -12,7 +12,7 @@
     <Authors>DenPaKousya</Authors>
     <Product>FFXIV_SUPPORT_GAMEPAD</Product>
     <Description>Extend gamepad button handling for FFXIV.</Description>
-    <Version>1.0.17</Version>
+    <Version>1.0.19</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
